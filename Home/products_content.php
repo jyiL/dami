@@ -1,6 +1,10 @@
 <?php
 	// 导入init
 	require './init.php';
+
+		// 获取数量
+	$num = isset($_GET['num']) ? $_GET['num'] : 1;
+	if($num < 1) $num = 1;
 ?>
 
 <!doctype html>
@@ -11,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="./Public/css/css.css">
 <link rel="stylesheet" type="text/css" href="./Public/css/liebiao.css">
 <link rel="stylesheet" type="text/css" href="./Public/css/jieshao.css">
+<link rel="stylesheet" type="text/css" href="./Public/css/ms.css">
 </head>
 <body>
 <!--header-->
@@ -26,8 +31,8 @@
 			$sql = 'select * from commodity where id=' . $id;
 			echo $sql;
 			$result = query($sql)[0];
-			echo '<pre>';
-			print_r($result);
+			//echo '<pre>';
+			//print_r($result);
 		?>
 		<!--输出商品名-->
 		<a href="#">首页</a><span>/</span><?php echo $result['name'];?>
@@ -48,7 +53,13 @@
  							<dt class="r_title"><h2><?php echo $result['name'];?></h2></dt>
  							<dd class="d-text"><p><?php echo $result['describe'];?></p></dd>
  							<dd class="yuan"><b><?php echo $result['price'];?></b> 元 </dd>
- 							<dd><a class="addcar" href="./action.php?handler=shopcar&id=<?php echo $result['id'];?>">加入购物车</a></dd>
+ 							<dd>
+
+ 								<a href="./products_content.php?id=<?= $id?>&num=<?php echo $num - 1;?>">-</a>
+	                            <input type="text" value="<?= $num;?>" id="dity-input" class="dity-input" maxlength="2">
+	                            <a href="./products_content.php?id=<?= $id?>&num=<?php echo $num + 1;?>">+</a>
+ 							</dd>
+ 							<dd><a class="addcar" href="./action.php?handler=shopcar&id=<?php echo $result['id'];?>&num=<?php echo $num?>">加入购物车</a></dd>
  							<dd></dd>
  						</dl>
  					</div>
@@ -63,7 +74,6 @@
 		<div class="box-img"><a href="#"><img src="./Public/img/mi4-video.jpg"></a></div>
 	</div>
 </div>
-
 
 <!--footer-->
 <?php require './footer.php';?>

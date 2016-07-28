@@ -57,11 +57,7 @@
             </p> 
             <span>请选择您的分类</span> 
         </li> 
-        <li> 
-            <label for="inp_email">姓名：</label> 
-            <p><input id="inp_email" class="input_out" name="name" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p> 
-            <span>请输入您的姓名</span> 
-        </li> 
+      
         <li> 
             <label for="inp_web">商品名：</label> 
             <p><input id="inp_web" class="input_out" name="name" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p> 
@@ -84,6 +80,8 @@
         	<p><input id="inp_web" class="input_out" name="store" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p>
         	<span>请输入您的库存</span> 
         </li>
+        <input type="hidden" mame="views" value="0">
+        <input type="hidden" mame="buy" value="0">
         <li>
         	<label for="inp_web">描述：</label>
         	<p>

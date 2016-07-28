@@ -32,7 +32,7 @@
 			
 		</div>
 		<div class="n_links_area">
-			<a href="#">注册小米帐号</a>
+			<a href="./register.php">注册小米帐号</a>
 			<span>|</span>
 			<a href="#">忘记密码？</a>
 		</div>

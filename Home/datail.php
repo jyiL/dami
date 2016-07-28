@@ -16,6 +16,7 @@
 <title>Index</title>
 <link rel="stylesheet" type="text/css" href="./Public/css/css.css">
 <link rel="stylesheet" type="text/css" href="./Public/css/liebiao.css">
+
 </head>
 <body>
 <!--header-->
@@ -24,6 +25,7 @@
 <div class="page-main">
              <?php
                     $id = $_GET['id'];
+                    //echo $id;
                     $sql = 'select * from category where id=' . $id;
                     $result = query($sql)[0];
 
@@ -36,14 +38,46 @@
     </div>
     <div class="container channel-nav">
         <ul>
+            
+
+
+
             <?php 
-                $sql = "select * from category where pid = '{$id}' limit 6";
+                $sql = "select * from commodity limit 6";
                 $result = query($sql);
+               // echo '<pre>';
+                //print_r($result);
+            
             ?>
+            
+
             <?php foreach($result as $k => $v):?>
             <li><a href="./products_content.php?id=<?php echo $v['id'];?>"><?php echo $v['name'];?></a></li>
             <?php endforeach;?>
+            
+
+
+
+
+
+
+
+
+
+
+
             <li><a href="#">查看全部&gt;</a></li>
+        
+
+
+
+
+
+
+
+
+
+
         </ul>
     </div>
     <div class="container channel-focus"><a><img src="./Public/img/channel-focus.jpg"></a></div>  

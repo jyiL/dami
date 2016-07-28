@@ -131,13 +131,15 @@ create table if not exists `content`(
 )engine=innodb default charset=utf8;
 
 
--- 创建友情链接表
-create table if not exists `url`(
+--友情链接
+create table `url`(
 	`id` int unsigned not null auto_increment primary key,
 	`name` varchar(128) not null,
-	`url` varchar(255) not null default '#',
-	`picname` varchar(255)
+	`url` varchar(255) not null,
+	`picname` varchar(255),
+	`addtime` int unsigned not null
 )engine=innodb default charset=utf8;
+
 
 -- 创建购物车表
 create table if not exists `buy_car`(

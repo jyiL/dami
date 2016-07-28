@@ -24,9 +24,9 @@
 </head>
 <body>
 <div class="login">
-	<h2>Acced Form</h2>
+	<h2>登陆小米商城后台管理系统</h2>
 	<div class="login-top">
-		<h1>登录表单</h1>
+		<h1>Login</h1>
 		<form action="./action.php?handler=dologin" method="post">
 			<input type="text" value="用户帐号" name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户帐号';}">
 			<input type="password" value="password" name="pass" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
@@ -45,11 +45,11 @@
 	    
 	</div>
 	<div class="login-bottom">
-		<h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>
+		<h3>mi &nbsp;<a href="../home/index.php">小米</a>&nbsp mi</h3>
 	</div>
 </div>	
 <div class="copyright">
-	<p>Copyright &copy; 2015.Company name All rights reserved.<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+	<p>Copyright &copy; 2015.Company name All rights reserved.<a href="http://www.mycodes.net/" target="_blank">小米</a></p>
 </div>
 
 <!--<script src="http://www.mycodes.net/js/tongji.js"></script>

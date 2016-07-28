@@ -209,9 +209,9 @@
 
 			//准备sql语句
 			$sql = "update users set status= {$status} where id =" . $id;
-			echo $sql;
+			//echo $sql;
 			$result = execu($sql);
-			var_dump($result);
+			//var_dump($result);
 			if($result){
 				header('location:./userlist.php');
 
@@ -219,4 +219,29 @@
 
 		break;
 
+		case 'grade2';
+
+
+			$id = $_GET['id'];
+			$status = $_GET['status'];
+		
+
+			//判断状态结果 1启用 0禁用
+			if($status == 1){
+				$status = 0;
+			}else{
+				$status = 1;
+			}
+
+			//准备sql语句
+			$sql = "update users set status= {$status} where id =" . $id;
+			echo $sql;
+			$result = execu($sql);
+			var_dump($result);
+			if($result){
+				header('location:./upd.php');
+
+			}
+
+		break;
 	}

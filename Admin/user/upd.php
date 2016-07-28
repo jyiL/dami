@@ -5,11 +5,11 @@
 	
 	$id = $_GET['id'];
 
-	$sql = 'select * from users where = ';
-	echo $sql;
+	$sql = 'select * from users where id = ' . $id;
+	//echo $sql;
 
 	$userlist = query($sql);
-	echo $userlist;
+	//echo $userlist;
 	
 	$sex = array('女','男','保密');
 	$grade = array('超级管理员','管理员','VIP会员','普通会员');
@@ -30,7 +30,7 @@
 		<h1 style="text-align:center;">用户浏览</h1>
 		<table width="100%" border="1" cellspacing="0" cellpadding="5" style="border-color:#98bf21;">
 
-		<?php foreach ($userlist as $k => $v):?>
+		<?php foreach($userlist as $k => $v):?>
 		<tr>
 			<th>用户ID</th>
 			<td><?php echo $v['id'];?></td>
@@ -72,25 +72,23 @@
 			<td><?php echo $grade[ $v['grade'] ];?></td>
 		</tr>
 		<tr>	
-			<td>
+			
 				<th>状态</th>
-				<a href="./action.php?handler=grade&id=<?php echo $v['id'];?>&status=<?php echo $v['status'];?>"><?php echo $status[ $v['status'] ];?></a>
-			</td>
+				<td>
+				<?php echo $status[ $v['status'] ];?>
+				</td>
 		</tr>
 		<tr>
 			<th>添加时间</th>
 			<td><?php date_default_timezone_set('PRC');echo date('Y-m-d H:i:s',$v['addtime']);?></td>
 		</tr>	
 		<tr>
-			<th>操作</th>
-			<td>
-				<?php if($v['grade'] != 0):?>
-				<a href="./editlist.php?id=<?php echo $v['id']?>"><button>编辑</button></a>
-				<a href="./action.php?handler=del&id=<?php echo $v['id']?>"><button>删除</button></a>
-				<?php endif;?>
+			<td colspan="2">
+			<center>
+			<a href="./userlist.php">返回</a>
+			</center>
 			</td>
 		</tr>
-		
 	<?php endforeach;?>
 	</table>
 	</body>

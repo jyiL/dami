@@ -36,7 +36,8 @@
 
 		if(strtolower($code) != strtolower($yzm)){
 
-			echo '验证码错误';
+			echo '<center><h1>验证码错误</h1></center>';
+			echo '<img src="./milogo.jpg">';
 			echo '<meta http-equiv="refresh" content="2;url=./login.php?errno=1"/>';
 				exit;
 
@@ -62,8 +63,8 @@
 			//echo '</pre>';
 
 			if(count($result) > 0){
-				echo '<h1>用户存在</h1>';
-				echo '<br>';
+				//echo '<h1>用户存在</h1>';
+				//echo '<br>';
 
 
 				if(md5($pass) == $result['pass']){
@@ -71,19 +72,22 @@
 					//信息存储在SESSION
 					$_SESSION['result'] = $result;
 
-					echo '成功登陆2秒后跳转';
+					//echo '成功登陆2秒后跳转';
+					echo '<img src="./milogo.jpg">';
 					echo '<meta http-equiv="refresh" content="2;url=./index.php"/>';
 
 				}else{
 
-					echo "<h1>密码错误</h1>";
+					echo "<center><h1>密码错误</h1></center>";
+					echo '<img src="./milogo.jpg">';
 					echo '<meta http-equiv="refresh" content="2;url=./login.php?error=2"/>';
 					exit;
 				}
 
 			}else{
 
-					echo "<h1>用户名错误</h1>";
+					echo "<center><h1>用户名错误</h1></center>";
+					echo '<img src="./milogo.jpg">';
 					echo '<meta http-equiv="refresh" content="2;url=./login.php?error=3"/>';
 					exit;
 
@@ -101,7 +105,7 @@
 			// unset();
 
 			session_destroy();
-			echo '<h1>退出成功</h1>';
+			echo '<center><h1>退出成功</h1></center>';
 			echo '<meta http-equiv="refresh" content="2;url=./login.php"/>';
 		break;
 
@@ -110,3 +114,7 @@
 
 
 	}
+?>
+
+
+

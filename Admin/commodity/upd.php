@@ -1,12 +1,13 @@
 <?php 
 	// 导入初始化文件
 	require '../init.php';
-	// 1.查询所有分类
-	$sql = 'select * from category order by concat(path,id)';
-	$id = $_GET['']
-	$result = query($sql)[$_GET['$id']];
+	
+	
+	$id = $_GET['id'];
+	$sql = 'select * from commodity where id = ' . $id;
+	$result = query($sql)[0];
 	//echo '<pre>';
-	print_r($result);
+	//print_r($result);
 
 
 
@@ -27,62 +28,33 @@
 	
 	<body>
 		<center>
-		<form action="./action.php?handler=edit&id=<?php echo $result['id'];?>" method="post" enctype="multipart/form-data">
+		<form action="./action.php?handler=edit&id=<?php echo $id;?>" method="post" enctype="multipart/form-data">
 		<h1>修改商品</h1>
 			<ul class="input_test"> 
-        <li> 
-            <label for="inp_name">分类：</label> 
-            <p>
-            	<select name="cateid">
-            		<!--遍历所有分类-->
-            		<?php
-            			foreach($result as $k => $v){
-            				//每次循环都初始化一个空字符
-            				$disabled = '';
-
-            				//如果是顶级分类
-            				if($v['pid'] == 0){
-            					$disabled = 'disabled';
-            				}
-
-            				//计算逗号的个数
-            				$num = substr_count($v['path'],',');
-            				//填充指定的字符串
-            				$res = str_repeat('→→',$num - 1);
-
-            				echo "<option {$disabled} value='{$v['id']}'>{$res}{$v['name']}</option>";
-
-            			}
-            		;?>
-            	</select>
-            </p> 
-            <span>请选择您的分类</span> 
-        </li> 
-        <li> 
-            <label for="inp_email">姓名：</label> 
-            <p><input id="inp_email" class="input_out" name="name" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p> 
-            <span>请输入您的姓名</span> 
-        </li> 
+        
+      	
         <li> 
             <label for="inp_web">商品名：</label> 
-            <p><input id="inp_web" class="input_out" name="name" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p> 
+            <p><input value="<?php echo $result['name'];?>" id="inp_web" class="input_out" name="name" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p> 
             <span>请输入您的商品名</span> 
         </li>
         <li> 
             <label for="inp_web">商品图片：</label> 
             <p><input name="myfile" type="file"></p> 
-            <span>请上传您的商品图片</span> 
+            <input type="hidden" name="picture" value="<?php echo $result['picture'];?>">
+            <span>请上传您的商品图片</span>
+             
         </li>
         <li> 
             <label for="inp_web">价格：</label> 
-            <p><input id="inp_web" class="input_out" name="price" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p> 
+            <p><input  value="<?php echo $result['price'];?>" id="inp_web" class="input_out" name="price" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p> 
             <span>请输入您的价格</span> 
         </li>
 
        
         <li>
         	<label for="inp_web">库存：</label>
-        	<p><input id="inp_web" class="input_out" name="store" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p>
+        	<p><input value = "<?php echo $result['store'];?>" id="inp_web" class="input_out" name="store" type="text" onfocus="this.className='input_on';this.onmouseout=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /></p>
         	<span>请输入您的库存</span> 
         </li>
         <li>
@@ -98,8 +70,8 @@
         	<label for="inp_web">上下架：</label> 
         	<p>
         		
-		         	上架：<input style="width:30px;" name="display" value="1" type="radio" checked>
-		            下架：<input style="width:30px;" name="display" value="0" type="radio">
+		         	上架：<input style="width:30px;" name="display" value="1" type="radio" <?php echo $result['display'] == 1 ? 'checked' : ''?>>
+		            下架：<input style="width:30px;" name="display" value="0" type="radio" <?php echo $result['display'] == 0 ? 'checked' : ''?>>
 		            	
 		     
 		     </p>
@@ -109,9 +81,9 @@
         	<label for="inp_web">状态：</label> 
         	<p>
         		<select name="status">
-        			<option value="0">热销</option>
-        			<option value="1" selected>新品</option>
-        			<option value="2">小而美</option>
+        			<option value="0" <?php echo $result['status'] == 0 ? 'selected' : ''?>>热销</option>
+        			<option value="1" <?php echo $result['status'] == 1 ? 'selected' : ''?>>新品</option>
+        			<option value="2" <?php echo $result['status'] == 2 ? 'selected' : ''?>>小而美</option>
         		</select>
 			</p>
 			<span>请选择您的状态</span> 

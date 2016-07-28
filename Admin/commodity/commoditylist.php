@@ -2,38 +2,62 @@
 	//导入初始化文件
 	require '../init.php';
 
-	//1.查总数
-	$sql = 'select count(*) total from commodity';
-	$total = query($sql);
-	$totalNum = $total[0]['total'];
+	$search = !empty($_POST['search']) ? $_POST['search'] : '';
+		//echo $search;
 
-	//2.定义每页显示的数目
-	$num = 3;
+		//搜索条件
 
-	//2.1求出总页码
-	$totalPage = ceil($totalNum / $num);
+		$where = '';
 
+		if(!empty($search)){
+			$where .= "where name like '%{$search}%'";
 
-	//3.获取当前页码
-	$p = isset($_GET['p']) ? $_GET['p'] : 1;//默认第一页
-	//3.1对当前页的控制
-	if($p > $totalPage) $p = $totalPage;
-	if($p < 1) $p = 1;
+		}
 
+		//分页
+		//每页显示数量
+		$num = 4;
 
-	//4.求出偏移量
-	$offset = ($p - 1) * $num;
+		//sql语句拿总数
+		$sql = 'select count(*) as total from commodity ';
 
 
-	//5.拼接sql
+		//echo $sql;
 
-	$sql = "select * from commodity order by id desc limit {$offset},{$num}";
-	//echo $sql;
-	$result = query($sql);
-	echo $p;
+		//总数
 
-	$dodisplay = array('下架','上架');
-	$status = array('热销','新品','小而美'); 
+		$total = query($sql)[0]['total'];
+
+
+		//当前页码
+		$p = isset($_GET['p']) ? $_GET['p'] : 1;
+
+		//页码数
+		$page = ceil($total / $num);
+
+		//防止页码超出范围
+		if($p<1){
+			$p = 1;
+		}
+
+		if($p>$page){
+			$p = $page;
+		}
+
+		//计算页码偏移量
+		$offset = ($p-1)*$num;
+
+		//分页的条件
+		$limit = " limit {$offset},{$num}";
+
+		//准备sql 查找商品
+		$sql = 'select * from commodity '.$where .$limit;
+		//echo $sql;
+		//执行sql语句
+		$result = query($sql);
+
+		$dodisplay = array('下架','上架');
+		$status = array('热销','新品','小而美');
 
 
 ?>
@@ -43,12 +67,43 @@
 	<head>
 		<meta charset='utf-8'>
 		<title></title>
+		<style type="text/css">
+		.tr td{
+			
+			padding:5px;
+			border:1px dashed #1C1C1C;
+			font: 15px/150% Arial,Verdana,"\5b8b\4f53";
+			color:#333333;
+		}
+		.tr th{
+			color:#fff;
+			border:1px dashed #1C1C1C;
+			background-color:#333333;
+			font-family: 15px/150% Arial,Verdana,"\5b8b\4f53";
+
+
+		}
+		.tr a{
+			color:#666;
+			
+			font-family: 15px/150% Arial,Verdana,"\5b8b\4f53";
+
+
+		}
+
+	</style>
 	</head>
 	
 	<body>
-		<h1 style="text-align:center;">用户浏览</h1>
-		<table width="100%" border="1" cellspacing="0" cellpadding="5" style="border-color:#98bf21;">
-		<tr>
+		<h1 style="text-align:center;">商品浏览</h1>
+		<form action="./commoditylist.php" method="post">
+		<div style="float:right;">
+		<input type="text" name="search" value="<?php echo $search;?>">
+		<input type="submit" value="搜索">
+		</div>
+		</form>
+		<table style="border: 1px solid #e5e5e5;border-collapse: collapse;text-align: center;width:100%">
+		<tr class="tr">
 			<th>ID</th>
 			<th>分类ID</th>
 			<th>商品名</th>
@@ -63,9 +118,10 @@
 			<th>添加时间</th>
 			<th>操作</th>
 		</tr>
+		<?php if(!empty($result)): ?>
 		<!--遍历用户-->
 		<?php foreach ($result as $k => $v):?>
-		<tr>
+		<tr class="tr">
 			
 			<td><?php echo $v['id'];?></td>
 			<td><?php echo $v['cateid'];?></td>
@@ -83,22 +139,25 @@
 			<td><?php date_default_timezone_set('PRC');echo date('Y-m-d H:i:s',$v['addtime']);?></td>
 			<td>
 				
-				<a href="./upd.php?id=<?php echo $v['cateid']?>"><button>编辑</button></a>
+				<a href="./upd.php?id=<?php echo $v['id']?>"><button>编辑</button></a>
 				<a href="./action.php?handler=del&id=<?php echo $v['id']?>"><button>删除</button></a>
 			
 			</td>
 		</tr>
 	<?php endforeach;?>
-	<tr>
+<?php endif;?>
+	<tr class="tr">
 		<td colspan="12">
-			<?php echo '总数量' . $totalNum;?>
+			<?php echo '总数量' . $total;?>
 			<?php echo '当前页码' . $p;?>
-			<?php echo '总页码' . $totalPage;?>
+			<?php echo '总页码' . $page;
+				$next = $p + 1;
+			?>
 
-			<a href="./commoditylist.php?p=<?php echo $p = 1;?>">首页</a>
-			<a href="./commoditylist.php?p=<?php echo $p - 1;?>">上一页</a>
-			<a href="./commoditylist.php?p=<?php echo $p + 1;?>">下一页</a>
-			<a href="./commoditylist.php?p=<?php echo $totalPage;?>">尾页</a>
+			<a href="./commoditylist.php?p=<?php echo 1;?>">首页</a>
+			<a href="./commoditylist.php?p=<?php echo $p -= 1;?>">上一页</a>
+			<a href="./commoditylist.php?p=<?php echo $next;?>">下一页</a>
+			<a href="./commoditylist.php?p=<?php echo $page;?>">尾页</a>
 
 		</td>
 	</tr>

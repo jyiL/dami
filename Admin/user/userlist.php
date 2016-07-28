@@ -20,12 +20,37 @@
 	<head>
 		<meta charset='utf-8'>
 		<title></title>
+		<style type="text/css">
+		.tr td{
+			
+			padding:5px;
+			border:1px dashed #1C1C1C;
+			font: 15px/150% Arial,Verdana,"\5b8b\4f53";
+			color:#333333;
+		}
+		.tr th{
+			color:#fff;
+			border:1px dashed #1C1C1C;
+			background-color:#333333;
+			font-family: 15px/150% Arial,Verdana,"\5b8b\4f53";
+
+
+		}
+		.tr a{
+			color:#666;
+			
+			font-family: 15px/150% Arial,Verdana,"\5b8b\4f53";
+
+
+		}
+
+	</style>
 	</head>
 	
 	<body>
 		<h1 style="text-align:center;">用户浏览</h1>
-		<table width="100%" border="1" cellspacing="0" cellpadding="5" style="border-color:#98bf21;">
-		<tr>
+		<table style="border: 1px solid #e5e5e5;border-collapse: collapse;text-align: center;width:100%">
+		<tr class="tr">
 			<th>用户ID</th>
 			<th>账号</th>
 			<th>头像</th>
@@ -42,7 +67,7 @@
 		</tr>
 
 		<?php foreach ($userlist as $k => $v):?>
-		<tr>
+		<tr class="tr">
 			
 			<td><?php echo $v['id'];?></td>
 			<td><?php echo $v['username'];?></td>

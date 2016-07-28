@@ -9,14 +9,19 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="public/css/xiaomi.css">
-    <script type="text/javascript" src="public/js/jquery-2.1.4.min.js" style="color: rgb(0, 0, 0);"></script>
-    <script src="public/js/jquery.animate-colors-min.js"></script>
+    <script type="text/javascript" src="./public/js/jquery-2.1.4.min.js" style="color: rgb(0, 0, 0);"></script>
+    <script src="./public/js/jquery.animate-colors-min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="./Public/css/ad.css?v=5">
+	<script type="text/javascript" src="./public/js/ad.js"></script>
 </head>
+
 <body>
+
      <div class="head_box">
          <div id="head_wrap">
              <div id="head_nav">
-                 <a class="head_nav_a">大米网</a>
+                 <a href="./index.php" class="head_nav_a">小米网</a>
                  <span>|</span>
                  <a class="head_nav_a">MIUI</a>
                  <span>|</span>
@@ -34,13 +39,13 @@
                  <span>|</span>
                  <a class="head_nav_a" id="Select_Region_but">Select Region</a>
              </div>
-             <div id="head_right">
+             <div id="head_right" style="color: #b0b0b0;">
                  <!--如果为空代表没有登录-->
                  <?php if(empty($_SESSION['userInfo'])):?>
                  <div id="head_landing">
                      <a class="head_nav_a" href="./login.php">登陆</a>
                      <span>|</span>
-                     <a class="head_nav_a" href="./#">注册</a>
+                     <a class="head_nav_a" href="./register.php">注册</a>
                  </div>
                  <div id="head_car">
                      <a class="head_car_text" href="./login.php">购物车（0）</a>
@@ -49,6 +54,7 @@
                      </div>
                  </div>
              	<?php else:?>
+             		<a class="head_nav_a" href="./personal.php">个人中心</a>
              		<a class="head_nav_a" href="./action.php?handler=logout">退出登录</a>
 
              	<?php endif;?>
@@ -63,14 +69,18 @@
              </div>
              <div id="menu_nav">
                  <ul>
-                     <li class="menu_li" control="xiaomiphone">大米手机</li>
-                     <li class="menu_li" control="hongmiphone">红米</li>
-                     <li class="menu_li" control="pingban">平板</li>
-                     <li class="menu_li" control="tv">电视&nbsp;&nbsp;盒子</li>
-                     <li class="menu_li" control="luyou">路由器</li>
-                     <li class="menu_li" control="yingjian">智能硬件</li>
-                     <li><a>服务</a></li>
-                     <li><a>社区</a></li>
+                     <?php
+                     $sql = 'select * from category where pid = 0 limit 4';
+                     $res = query($sql);
+
+                     ?>
+                     <?php foreach($res as $k => $v):?>
+                     <li class="menu_li" control="xiaomiphone"><a href="./datail.php?id=<?php echo $v['id'];?>"><?php echo $v['name'];?></a></li>
+                  
+                     <?php endforeach;?>
+
+                     <li><a href="./ms.php">留言板</a></li>
+                     
                  </ul>
              </div>
              <div id="find_wrap">
@@ -81,165 +91,38 @@
              </div>
          </div>
      </div>
+    
      <div id="menu_content_bg" style="height: 0px;">
          <div id="menu_content_wrap">
              <ul style="top: 0px;">
-                 <li id="xiaomiphone">
+                 
+				<?php
+				     $sql = 'select * from commodity limit 4';
+				     $commoditylist = query($sql);
+				     //echo '<pre>';
+				     //print_r($commoditylist);
+				 ?>
+ 				
+				 <?php foreach($commoditylist as $key => $val):?>
+				 	<?php 
+				 	$sql = 'select * from commodity limit 4';
+				 	$list = query($sql);
+				 	?>
+                <li id="xiaomiphone" class="<?php echo $key?>">
+                     
+                 	<?php foreach($list as $key => $v):?>
                      <div class="menu_content">
-                         <img src="public/img/mi4!160x110.jpg">
-                         <p class="menu_content_tit">大米手机4</p>
-                         <p class="menu_content_price">1499元起</p>
+                         <img src="../admin/public/uploads/<?php echo $v['picture']?>">
+                         <p class="menu_content_tit"><?php echo $v['name'];?></p>
+                         <p class="menu_content_price"><?php echo $v['price'];?></p>
                      </div>
                      <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/minote!160x110.jpg">
-                         <p class="menu_content_tit">大米NOTE标准版</p>
-                         <p class="menu_content_price">1999元起</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/minotepro!160x110.jpg">
-                         <p class="menu_content_tit">大米NOTE顶配版</p>
-                         <p class="menu_content_price">2999元起</p>
-                     </div>
+                   
+                 
+
+                <?php endforeach;?>
                  </li>
-                 <li id="hongmiphone">
-                     <div class="menu_content">
-                         <img src="public/img/hongmi2a!160x110.jpg">
-                         <p class="menu_content_tit">红米手机2A</p>
-                         <p class="menu_content_price">499元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/hongmi2!160x110.jpg">
-                         <p class="menu_content_tit">红米手机2</p>
-                         <p class="menu_content_price">599元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/note!160x110.jpg">
-                         <p class="menu_content_tit">红米NOTE</p>
-                         <p class="menu_content_price">699元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/note2!160x110.jpg">
-                         <p class="menu_content_tit">红米NOTE2</p>
-                         <p class="menu_content_price">799元</p>
-                     </div>
-                 </li>
-                 <li id="pingban">
-                     <div class="menu_content">
-                         <img src="public/img/mipad16!160x110.jpg">
-                         <p class="menu_content_tit">大米平板16G</p>
-                         <p class="menu_content_price">1299元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/mipad64!160x110.jpg">
-                         <p class="menu_content_tit">大米平板64G</p>
-                         <p class="menu_content_price">1499元起</p>
-                     </div>
-                 </li>
-                 <li id="tv">
-                     <div class="menu_content">
-                         <img src="public/img/mitv40!160x110.jpg">
-                         <p class="menu_content_tit">大米电视2&nbsp;40英寸</p>
-                         <p class="menu_content_price">1999元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/mitv48!160x110.jpg">
-                         <p class="menu_content_tit">大米电视2S&nbsp;48英寸</p>
-                         <p class="menu_content_price">2999元起</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/mitv49!160x110.jpg">
-                         <p class="menu_content_tit">大米电视2&nbsp;49英寸</p>
-                         <p class="menu_content_price">3399元起</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/mitv55!160x110.jpg">
-                         <p class="menu_content_tit">大米电视2&nbsp;55英寸</p>
-                         <p class="menu_content_price">4499元起</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/hezimini!160x110.jpg">
-                         <p class="menu_content_tit">大米盒子MINI版</p>
-                         <p class="menu_content_price">199元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/hezis!160x110.jpg">
-                         <p class="menu_content_tit">大米盒子增强版</p>
-                         <p class="menu_content_price">299元</p>
-                     </div>
-                 </li>
-                 <li id="luyou">
-                     <div class="menu_content">
-                         <img src="public/img/miwifi!160x110.jpg">
-                         <p class="menu_content_tit">全新大米路由器</p>
-                         <p class="menu_content_price">699元起</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/miwifimini!160x110.jpg">
-                         <p class="menu_content_tit">大米路由器&nbsp;MINI</p>
-                         <p class="menu_content_price">129元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/miwifilite!160x110.jpg">
-                         <p class="menu_content_tit">大米路由器&nbsp;青春版</p>
-                         <p class="menu_content_price">79元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/wifiExtension!160x110.jpg">
-                         <p class="menu_content_tit">大米WIFI放大器</p>
-                         <p class="menu_content_price">39元</p>
-                     </div>
-                 </li>
-                 <li id="yingjian">
-                     <div class="menu_content">
-                         <img src="http://c1.mifile.cn/f/i/15/goods/nav/scale!160x110.jpg">
-                         <p class="menu_content_tit">体重称</p>
-                         <p class="menu_content_price">99元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/xiaoyi!160x110.jpg">
-                         <p class="menu_content_tit">摄像头</p>
-                         <p class="menu_content_price">129元起</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/yicamera!160x110.jpg">
-                         <p class="menu_content_tit">运动相机</p>
-                         <p class="menu_content_price">399元起</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/ihealth!160x110.jpg">
-                         <p class="menu_content_tit">血压计</p>
-                         <p class="menu_content_price">199元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/chazuo!160x110.jpg">
-                         <p class="menu_content_tit">智能插座</p>
-                         <p class="menu_content_price">59元</p>
-                     </div>
-                     <span class="menu_content_line"></span>
-                     <div class="menu_content">
-                         <img src="public/img/smart!160x110.jpg">
-                         <p class="menu_content_tit">查看全部
-                             <br>智能硬件</p>
-                     </div>
-                 </li>
+                 <?php endforeach;?>
              </ul>
          </div>
      </div>
@@ -259,12 +142,12 @@
                 <a href="./datail.php?id=<?php echo $v['id'];?>"><?php echo $v['name'];?></a>
                 <a class="banner_menu_i">&gt;</a>
 
-             
+             <!--
                  <div class="banner_menu_content" style="width: 600px; top: -20px; border: 0px solid rgb(240, 240, 240); display: none;">
                      
                     <?php 
-                        $sql = "select * from category where path like '0,%'";
-                        echo $sql;
+                        //$sql = "select * from category where path like '0,%'";
+                        //echo $sql;
 
 
 
@@ -278,7 +161,7 @@
                        
                      </ul>
                      
-                 </div>
+                 </div>-->
              </li>
              <?php endforeach;?>
              <!--结束-->
@@ -411,7 +294,7 @@
                  </li>
                  <!--新品-->
                  <?php 
-                 $sql = 'select * from commodity where status = 1';
+                 $sql = 'select * from commodity where status = 1 limit 8';
                  $status = query($sql);
 
 
@@ -488,10 +371,27 @@
          <div class="foot_note_box">
              <div class="foot_note_wrap">
                  <div class="foot_note_con">
-                     <span class="foot_logo"><img src="public/img/mi-logo.png" width="38px" height="38px"></span>
+                     
 						<span class="foot_note_txt">
-							<a>大米网</a><h>|</h><a>MIUI</a><h>|</h><a>米聊</a><h>|</h><a>多看书城</a><h>|</h><a>大米路由器</a><h>|</h><a>大米后院</a><h>|</h><a>大米天猫店</a><h>|</h><a>大米淘宝直营店</a><h>|</h><a>大米网盟</a><h>|</h><a>问题反馈</a><h>|</h><a>Select Region</a>
-						    <a> 5555555号</a>
+						<?php
+							$sql = 'select * from url limit 10';
+
+							$result = query($sql);
+							//echo '<pre>';
+
+							//print_r($result);
+
+
+						?>	
+						<!--开始遍历友情链接-->
+						<?php foreach($result as $k => $v):?>
+							<?php echo "<img width='30' src='".HTTPATH."../admin/public/logo/".$v['picname']."' />" ?>
+							<a href="<?php echo $v['url'];?>"><?php echo $v['name'];?></a><h>|</h>
+
+
+						<?php endforeach;?>
+						<!--结束 遍历-->
+						<a href="./link.php">友情链接</a>
 						</span>
                  </div>
 
@@ -501,5 +401,7 @@
 
 <script type="text/javascript" src="public/js/xiaomi.js"></script>
 
-
+<?php
+	require('./advertisement.php');
+?>
 </body></html>

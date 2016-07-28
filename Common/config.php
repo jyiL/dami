@@ -2,7 +2,7 @@
 
 	define('HOST','localhost'); // 地址
 	define('USER','root'); // 用户
-	define('PASS','root'); //密码
+	define('PASS','P@ssw0rd'); //密码
 
 
 	define('PIX','shop_'); // 表前缀

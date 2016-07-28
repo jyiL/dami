@@ -57,12 +57,7 @@
     <!--菜单-->
     <div class="layout_left_menu">
         <ul class="tendina" id="menu">
-            <li class="childUlLi">
-               <a href="#" target="menuFrame"><i class="glyph-icon icon-home"></i>首页</a>
-                <ul style="display: none;">
-                    <li><a href="#" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>测试</a></li>
-                </ul>
-            </li>
+            
             <li class="childUlLi">
                 <a href="#" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>会员管理</a>
                 <ul style="display: none;">
@@ -82,21 +77,36 @@
                 <ul style="display: none;">
                     <li><a href="./category/catelist.php" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>查看分类</a></li>
                     <li><a href="./category/addcategory.php" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>添加顶级分类</a></li>
-                    <li><a href="#" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>测试1</a></li>
-                    <li><a href="#" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>测试2</a></li>
+                    
+                </ul>
+            </li>
+
+
+            <li class="childUlLi">
+                <a href="#"> <i class="glyph-icon  icon-location-arrow"></i>订单管理</a>
+                <ul style="display: none;">
+                    <li><a href="./order/orderlist.php" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>浏览订单</a></li>
+                    
+                    
+                </ul>
+            </li>
+             <li class="childUlLi">
+                <a href="#"> <i class="glyph-icon  icon-location-arrow"></i>友情链接</a>
+                <ul style="display: none;">
+                    <li><a href="./url/urllist.php" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>查看链接</a></li>
+                    <li><a href="./url/addurl.php" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>添加链接</a></li>
+
+                    
                 </ul>
             </li>
         </ul>
     </div>
     <!--菜单-->
     <div id="layout_right_content" class="layout_right_content">
-        <div class="route_bg">
-            <a href="#">主页</a><i class="glyph-icon icon-chevron-right"></i>
-            <a href="#">会员管理</a>
-        </div>
+        
         <div class="mian_content">
             <div id="page_content">
-                <iframe id="menuFrame" name="menuFrame" src="main.php" style="overflow:visible;" scrolling="yes" frameborder="no" height="100%" width="100%"></iframe>
+                <iframe id="menuFrame" name="menuFrame" src="./index.jpg" style="overflow:visible;" scrolling="yes" frameborder="no" height="100%" width="100%"></iframe>
             </div>
         </div>
     </div>
