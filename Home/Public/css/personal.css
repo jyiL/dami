@@ -1,0 +1,40 @@
+.personal{
+	width: 950px;
+	/*border: 1px solid red;*/
+	margin: 0 auto;
+}
+.personal a{
+	color:#FAE3CB;
+}
+.personal h3{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #B0B0B0;
+}
+.p_box{
+	width: 900px;
+	height: 80px;
+	/*border: 1px solid blue;*/
+	border-bottom: 1px solid #DDDDDD;
+	margin-bottom: 10px;
+}
+.p_box span{
+	display: block;
+	color: #68635E;
+	font-size: 14px;
+	margin-top: 5px;
+}
+.p_text{
+	width: 250px;
+	height: 30px;
+}
+.p_btn{
+	display: block;
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	height: 40px;
+	background-color: #F25807;
+	color: #fff;
+}

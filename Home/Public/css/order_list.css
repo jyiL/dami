@@ -1,0 +1,165 @@
+.order_til{
+	width: 900px;
+	height: 40px;
+	/*border: 1px solid red;*/
+	margin: 0 auto;
+	margin-top: 40px;
+	line-height: 40px;
+	overflow: hidden;
+}
+.order_til h2{
+	float: left;
+	color: #494949;
+}
+.order_til span{
+	float: left;
+	color: #5C5C5C;
+	font-size: 12px;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.oreder_head{
+	width: 900px;
+	height: 40px;
+	/*border: 1px solid red;*/
+	margin: 0 auto;
+	margin-top: 10px;
+	line-height: 40px;
+}
+.header_left{
+}
+.header_left a{
+	text-decoration: none;
+	color: #68635E;
+	font-size: 14px;
+	margin: 0 10px;
+}
+.header_right{
+	float: right;
+}
+.search_text{
+	width: 200px;
+	height: 35px;
+}
+.search_btn{
+	padding:0;
+	margin: 0;
+	border: 0;
+	display: block;
+	float: right;
+	width: 40px;
+	height: 39px;
+	background-color: #FF6700;
+	color: #fff;
+	margin-top: 1px;
+
+}
+.order_text{
+	width: 900px;
+/*	height: 200px;*/
+	border: 1px solid red;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.text_top{
+	width: 898px;
+	height: 90px;
+	border-bottom: 1px solid #FFDFCB;
+	float: left;
+	background-color: #FFFAF7;
+}
+.t_left{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 30px;
+	font-size: 14px;
+	color: #575E65;
+}
+.t_left h3{
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.t_right{
+	float: right;
+	margin-top: 45px;
+	margin-right: 30px;
+	font-size: 15px;
+	color: #575E65;
+}
+.t_right span{
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+}
+.text_content{
+	/*height: 100px;*/
+	width: 894px;
+	/*border: 1px solid black;*/
+	overflow: hidden;
+}
+.c_left{
+	width: 650px;
+	/*border: 1px solid red;*/
+	/*overflow: hidden;*/
+	
+	/*height: 700px;*/
+	float: left;
+}
+.l_info{
+	margin:10px 0 10px 10px;
+	/*border: 1px solid blue;*/
+	overflow: hidden;
+}
+.l_info img{
+	width: 70px;
+	height: 70px;
+	float: left;
+
+}
+.i_text{
+	float: left;
+	/*border: 1px solid black;*/
+	width: 500px;
+	height: 60px;
+	font-size: 14px;
+	color: #000;
+	margin-left: 20px;
+	padding-top: 10px;
+	/*margin-top: 20px;*/
+}
+.i_text span{
+}
+.c_right{
+	float: right;
+	width: 180px;
+	height: 80px;
+	/*border: 1px solid black;*/
+	margin-top: 10px;
+}
+.c_bth{
+	display: block;
+	width:160px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.btn_top{
+	color: #FFF;
+	background-color: #FF6700;
+	border: none;
+}
+.btn_buttom{
+	color: #615F60;
+	border:1px solid #615F60;
+}
+.order_buttom{
+	width: 200px;
+	height: 200px;
+}
+.c_border{
+	border: 1px solid #C3C3C3;
+}
+

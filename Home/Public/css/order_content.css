@@ -1,0 +1,95 @@
+.oreder_header{
+	width: 900px;
+	height: 50px;
+	/*border: 1px solid red;*/
+	border-bottom: 1px solid #DFDFDF;
+	margin: 0 auto;
+	margin-top: 20px;
+	line-height: 50px;
+}
+.oreder_header h3{
+	font-size: 18px;
+	float: left;
+}
+.oreder_header a{
+	float: right;
+	margin-top: 10px;
+}
+.oreder_header a:hover{
+	background-color: #FF6700;
+	color: #fff;
+}
+.con_all{
+	width: 900px;
+	/*border: 1px solid red;*/
+	margin:0 auto;
+}
+.con_li{
+	width: 898px;
+	height: 200px;
+	/*border:1px solid blue;*/
+	border-bottom: 1px solid #DDDDDD;
+
+}
+.con_li2{
+	width: 898px;
+	/*border:1px solid blue;*/
+	border-bottom: 1px solid #DDDDDD;
+}
+.con_a{
+	margin-top: 60px;
+}
+.li_info{
+	margin-top: 40px;
+	margin-left: 20px;
+	float: left;
+}
+.li_info h3{
+	margin-bottom: 20px;
+
+}
+.li_info span{
+	font-size: 14px;
+	display: inline-block;
+	margin-bottom: 10px;
+	color: #646464;
+}
+.li_btn{
+	float: right;
+	margin-top: 30px;
+}
+.liubai{
+	width: 200px;
+	height: 50px;
+}
+.count_button{
+	width: 200px;
+	height: 200px;
+	/*border: 1px solid red;*/
+	float: right;
+	margin-right: 50px;
+	margin-top: 20px;
+}
+.cb_text{
+	/*border: 1px solid blue;*/
+
+}
+.cb_text span{
+	display: inline-block;
+	font-size: 14px;
+	margin: 10px 0;
+}
+.text_l{
+	color: #7C7E7E;
+}
+.text_r{
+	float: right;
+	color: #FF5500;
+}
+.text_r strong{
+	font-size: 28px;
+}
+.text_ltop{
+	position: relative;
+	top: 10px;
+}

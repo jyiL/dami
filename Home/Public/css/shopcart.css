@@ -1,0 +1,183 @@
+body{
+	background-color: #F5F5F5;
+}
+.carTop{
+	height:100px;
+	background-color:#fff;
+	font-size:12px;
+	color:#b0b0b0;
+}
+.topBox{
+	height: 90px;
+	width: 1220px;
+	margin: 0 auto;
+	/*border: 1px solid red;*/
+}
+.boxLeft img{
+	float: left;
+	margin-top: 20px;
+}
+.boxLeft h2{
+	margin-top: 30px;
+	margin-left: 30px;
+	float: left;
+	font-size: 28px;
+	color: #424242;
+}
+.boxLeft span{
+	margin-top: 45px;
+	margin-left: 20px;
+	float: left;
+	color: #757575;
+}
+.boxRight{
+	/*border: 1px solid red;*/
+	float: right;
+	margin-right: 20px;
+	margin-top: 40px;
+	
+}
+.boxRight a{
+	color: #757575;
+}
+.carList{
+	overflow: hidden;
+	margin-top: 20px;
+}
+.carNav{
+	width: 1226px;
+	height: 70px;
+	background-color: #fff;
+	margin:0 auto;
+}
+.gImg{
+	width: 120px;
+	height: 70px;
+	margin-left: 50px;
+}
+.gName{
+	float: left;
+	width: 380px;
+	height: 70px;
+}
+.gNavStyle{
+	float: left;
+	line-height: 70px;
+	text-align: center;
+	float: left;
+	/*border:1px solid red;*/
+	font-size: 14px;
+	color: #424242;
+}
+.gPrice{
+	width: 160px;
+	height: 70px;
+}
+.gNum{
+	width: 150px;
+	height: 70px;
+}
+.gXiaoji{
+	width: 200px;
+	height: 70px;
+}
+.gCaoZuo{
+	width: 80px;
+	height: 70px;
+}
+.carInfo{
+	height: 85px;
+	margin-top: 3px;
+}
+.gImgInfo{
+	width: 120px;
+	height: 84px;
+	margin-left: 50px;
+	padding-top: 2px;
+}
+.gImgInfo img{
+	width: 78px;
+	height: 78px;
+}
+.gNameInfo{
+	float: left;
+	width: 380px;
+	height: 86px;
+}
+.gNavStyleInfo{
+	float: left;
+	line-height: 70px;
+	text-align: center;
+	float: left;
+	/*border:1px solid red;*/
+	font-size: 14px;
+	color: #424242;
+}
+.gPriceInfo{
+	width: 160px;
+	height: 86px;
+}
+.gNumInfo{
+	width: 150px;
+	height: 86px;
+}
+.gXiaojiInfo{
+	width: 200px;
+	height: 86px;
+	color: #FF6700;
+}
+.gCaoZuoInfo{
+	width: 80px;
+	height: 86px;
+}
+.gCaoZuoInfo a{
+	color: #000;
+}
+.jieSuan{
+	margin-top: 20px;
+	height: 50px;
+}
+.jLeft{
+	width: 296px;
+	height: 48px;
+	/*border: 1px solid red;*/
+	font-size: 14px;
+	text-align: center;
+	line-height: 48px;
+	float: left;
+	
+}
+.jLeft a{
+	color: #757575;
+}
+.jCount{
+	width: 296px;
+	height: 48px;
+	/*border: 1px solid red;*/
+	font-size: 14px;
+	text-align: center;
+	line-height: 48px;
+	float: left;
+	color: #F25807;
+	margin-left: 350px;
+}
+.jCount span{
+	font-size: 28px;
+}
+.jRight{
+	width: 200px;
+	height: 50px;
+	font-size: 18px;
+	text-align: center;
+	line-height: 48px;
+	float: right;
+	background-color: #F25807;
+}
+.jRight a{
+	color: #FFF;
+}
+
+
+
+
+
